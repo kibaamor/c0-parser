@@ -3,15 +3,15 @@
 
 namespace c0
 {
-    std::atomic_int32_t _astInstanceCount = {0};
-    std::unordered_map<ASTType, int> _astInstanceMap;
+    std::atomic<std::int32_t> _astInstanceCount = {0};
+    instancemap_t _astInstanceMap;
 
     int32_t AST::GetInstanceCount()
     {
         return _astInstanceCount.load(std::memory_order::memory_order_acquire);
     }
 
-    const std::unordered_map<ASTType, int32_t>& AST::GetInstanceMap()
+    const instancemap_t& AST::GetInstanceMap()
     {
         return _astInstanceMap;
     }

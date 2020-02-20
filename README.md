@@ -4,7 +4,7 @@ C0语言的词法分析和抽象语法树(AST)分析器
 
 ## C0语言
 
-C0是简化了C语言语法与编译过程得到的小型编程语言。
+C0是简化了C语言语法与编译过程得到的小型编程语言。在文档的最后有C0的完整文法定义。
 
 保留了C中的：
 - 变量类型：int, char, double
@@ -14,7 +14,68 @@ C0是简化了C语言语法与编译过程得到的小型编程语言。
 - 输入输出：scan, print
 - 函数相关：return
 
-## 完整的C0文法
+## 如何编译
+
+### 需要的软件
+
+- Visual Studio 2015及以上(Windows)
+- Gcc 4.9.1 (Linux)
+- CMake 3.1及以上
+
+### 编译步骤
+
+打开命令行
+
+```
+# 下载源码
+git clone https://github.com/KibaAmor/c0-parser.git
+
+# 进入源码根目录
+cd c-parser
+
+# 创建存放编译中间文件的目录
+mkdir build
+
+# 进入存放编译中间文件的目录
+cd build
+
+# 生成工程
+cmake ..
+
+# 编译工程
+# Windows下直接用Visual Studio打开c0-parser.sln
+c0-parser.sln
+# Linux下使用下面的命令编译
+make -j3
+```
+
+生成的可执行文件在`存放编译中间文件的目录`下面的bin文件夹中。
+
+> Windows下也可以运行源码根目录scripts目录下的`gen_vs2015project.bat`或者`gen_vs2017project.bat`来生成sln工程文件。
+
+## 如何测试
+
+### Windows
+
+在Visual Studio中编译工程中名为`RUN_TESTS`的项目，即可在Visual Studio的编译输出控制台中看到测试结果，也可以直接运行项目中`test`文件夹下的工程。
+
+### Linux
+
+打开命令行
+
+```
+进入源码根目录
+cd c-parser
+
+# 进入存放编译中间文件的目录
+cd build
+
+# 运行所有测试
+make test
+
+```
+
+## 附：完整的C0文法
 
 ```text
 <digit> ::= 

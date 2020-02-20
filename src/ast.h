@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
-#include <unordered_map>
+#include <map>
 #include "token.h"
 
 namespace c0
@@ -190,11 +190,13 @@ namespace c0
     };
     using ASTUserDataPtr = std::shared_ptr<ASTUserData>;
 
+    using instancemap_t = std::map<ASTType, std::int32_t>;
+
     class AST : public std::enable_shared_from_this<AST>
     {
     public:
         static int32_t GetInstanceCount();
-        static const std::unordered_map<ASTType, int32_t>& GetInstanceMap();
+        static const instancemap_t& GetInstanceMap();
 
     public:
         AST(ASTPtr parent, ASTType type);
