@@ -1,0 +1,43 @@
+// test variable declare
+
+int gi0 = 1;                    // global non const
+const int gci0 = 2;             // global const
+
+int gi1 = gi0 * 11;             // global non const use non const
+int gi2 = gci0 * 12;            // global non const use const
+int gi3 = gi0 * gci0;           // global mix use
+
+const int gci1 = gci0 * 22;     // global const use const
+
+int main()
+{
+    int li0 = 1;                    // local non const
+    const int lci0 = 2;             // local const
+
+    int li1 = li0 * 11;             // local non const use non const
+    int li2 = lci0 * 12;            // local non const use const
+    int li3 = li0 * lci0;           // local mix use
+
+    const int lci1 = lci0 * 22;     // local const use const
+
+    // local use global
+
+    int xi0 = gi0 + li0;
+    int xi1 = gi1 - li1;
+    int xi2 = gi2 * li2;
+    int xi3 = gi3 / li3;
+    int xi4 = gi0 * 31;
+    int xi5 = gi0 * li1 + li2 / gi3;
+    int xi6 = li0 * gi1 + gi2 / li3;
+
+    const int xci0 = gci0 + lci0;
+    const int xci1 = gci1 - lci1;
+
+    print("global variable:", gi0, gi1, gi2, gi3, gci0, gci1);
+    print("local variable:", li0, li1, li2, li3, lci0, lci1);
+    print("mixed variable:", xi0, xi1, xi2, xi3, xci0, xci1);
+
+    return gi0 + gi1 - gi2 * gi3 / (gci0 + gci1)
+        + (li0 + li1 - li2 * li3 / (lci0 - lci1))
+        - (xi0 + xi1 - xi2 * xi3 / (xci0 * xci1));
+}

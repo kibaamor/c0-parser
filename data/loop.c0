@@ -1,0 +1,79 @@
+int forloop(const int beg, const int end, int step)
+{
+    const int mid = (beg + end) / 2;
+    int count = 0;
+    int i = beg;
+
+    for (; i < end; i = i + step)
+    {
+        if (count < mid)
+            continue;
+
+        if (count > mid)
+            break;
+
+        count = count + 1;
+    }
+
+    return count;
+}
+
+int whileloop(const int beg, const int end, int step)
+{
+    const int mid = (beg + end) / 2;
+    int count = 0;
+
+    int i = beg;
+    while (i < end)
+    {
+        i = i + step;
+
+        if (count < mid)
+            continue;
+
+        if (count > mid)
+            break;
+
+        count = count + 1;
+    }
+
+    return count;
+}
+
+int doloop(const int beg, const int end, int step)
+{
+    const int mid = (beg + end) / 2;
+    int count = 0;
+
+    int i = beg;
+    do
+    {
+        if (i >= end)
+            break;
+
+        i = i + step;
+
+        if (count < mid)
+            continue;
+
+        if (count > mid)
+            break;
+
+        count = count + 1;
+    } while (1);
+
+    return count;
+}
+
+int main()
+{
+    const int beg = 0;
+    const int end = 10;
+    int step = 2;
+
+    int count1 = forloop(beg, end, step);
+    int count2 = whileloop(beg, end, step);
+    int count3 = doloop(beg, end, step);
+
+    return count1 + count2 + count3;
+}
